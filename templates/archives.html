@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block container %}
+<div class="container">
+
+    <div class="row">
+        <div class="page-header">
+            <h1>Archives <span class="badge">{{all_posts|length}} posts</span></h1>
+        </div>
+        {% for year in archives|sort(reverse=True) %}
+        <div id="{{year}}">
+            {% set by_month = archives[year] %}
+            <h2>{{year}} <span class="badge">{{post_counter[year]}}</span></h2>
+            <table class="table table-striped">
+            {% for month in by_month|sort(reverse=True) %}
+                <tr>
+                    <td class="by_month">
+                        <a href="#" class="btn btn-info">{{month}}</a>
+                    </td>
+                    <td>
+                    {% for day in by_month[month]|sort(reverse=True) %}
+                        {% for post in by_month[month][day]|sort(reverse=True) %}
+                            <h4><a href="{{post.permlink}}">{{post.title}}</a></h4>
+                        {% endfor %}
+                    {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% include "footer.html" %}
+
+</div> <!-- /container -->
+{% endblock %}

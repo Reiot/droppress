@@ -1,0 +1,23 @@
+<ul class="nav nav-list well dsq-widget">
+	<li>
+		{% if config.facebook %}
+		<a href="http://facebook.com/{{config.facebook}}" style="display: inline-block"><img src="/assets/img/facebook.png" /></a>
+		{% endif %}
+		{% if config.twitter %}
+		<a href="http://twitter.com/{{config.twitter}}" style="display: inline-block"><img src="/assets/img/twitter.png" /></a>
+		{% endif %}
+	    <a href="atom.xml" style="display: inline-block"><img src="/assets/img/rss.png" /></a>
+	</li>
+	<li class="nav-header">
+		Recent Posts
+	</li>
+	{% for post in posts %}
+	<li>
+		<a href="{{post.permlink}}">{{post.title}}</a>
+	</li>
+	{% endfor %}
+	<li class="nav-header dsq-widget-title">
+		Recent Comments
+	</li>
+	<script type="text/javascript" src="http://reiot.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=32&excerpt_length=200"></script>
+</ul>

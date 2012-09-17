@@ -1,0 +1,6 @@
+jinja2
+markdown
+feedgenerator
+
+#lxml
+#beautifulsoup4

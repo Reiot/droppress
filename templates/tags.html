@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block container %}
+<div class="container">
+
+	<div class="page-header">
+		<h1>Tags <span class="badge">{{tags|count}}</span></h1>
+	</div>
+
+	<p class="tag-cloud">
+	{% for tag, posts in tags|dictsort %}
+		{% set count = posts|length %}
+		{% if count < 3 %}
+			{% set btn_class = 'btn-mini' %}
+		{% elif count < 6 %}
+			{% set btn_class = 'btn-small btn-info' %}
+		{% elif count < 9 %}
+			{% set btn_class = 'btn-success' %}
+		{% else %}
+			{% set btn_class = 'btn-large btn-warning' %}
+		{% endif %}
+
+		<a href="/tag/{{tag}}/" class="btn {{btn_class}}" rel="tooltip" title="{{count}} posts">{{tag}}</a>
+	{% endfor %}
+	</p>
+
+	{% include "footer.html" %}
+
+</div> <!-- /container -->
+{% endblock %}

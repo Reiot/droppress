@@ -1,0 +1,18 @@
+title: Rebooting Reiot
+url: http://reiot.com
+description: A social game developer wandering strange dungeons...
+author_name: Ray Yun
+language: ko
+feed_url: http://reiot.com/atom.xml
+
+github_url: https://github.com/Reiot/reiot.github.com
+cname: reiot.com
+dropbox_dir: /Users/reiot/Dropbox
+disqus_name: reiot
+google_analytics: UA-247024-1
+twitter: reiot
+facebook: reiot
+
+post_per_page: 5
+post_per_feed: 10
+default_category: stories

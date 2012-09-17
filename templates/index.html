@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block container %}
+<div class="container">
+
+	{% if page == 1 %}
+	<div class="hero-unit hidden-phone">
+	  <h1>{{config.title}}</h1>
+	  <p>{{config.description}}</p>
+	  <p>
+	    <a href="atom.xml" class="btn btn-primary btn-large">
+	    	<img src="/assets/img/rss.png" />
+	      	Subscribe Now
+	    </a>
+	  </p>
+	</div>
+	{% endif %}
+
+	<div class="row">
+		<div class="span9">
+			{% for post in posts %}
+				{% include "post.tmpl" %}
+			{% endfor %}
+			<div class="pagination pagination-centered">
+				<ul>
+				{% if page == 1 %}
+					<li class="disabled"><a href="#">&laquo;</a></li>
+				{% else %}
+					<li><a href="/page/{{pagination[0]-1}}/">&laquo;</a></li>
+				{% endif %}
+				{% for p in pagination %}
+				  	<li {% if p == page %}class="active"{% endif %}>
+				  	{% if p == 1 %}
+				  		<a href="/">1</a>
+				  	{% else %}
+				    	<a href="/page/{{p}}/">{{p}}</a>
+				    {% endif %}
+				  	</li>
+		  		{% endfor %}
+				{% if page == max_page %}
+					<li class="disabled"><a href="#">&raquo;</a></li>
+				{% else %}
+					<li><a href="/page/{{pagination[-1]+1}}/">&raquo;</a></li>
+				{% endif %}
+		  		</ul>
+			</div>
+		</div>
+		<div class="span3">
+			{% include "sidebar.html" %}
+		</div>
+	</div>
+
+	{% include "footer.html" %}
+
+</div> <!-- /container -->
+{% endblock %}

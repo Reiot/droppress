@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block container %}
+<div class="container">
+
+	<div class="page-header">
+		<h1>Categories <span class="badge">{{categories|count}}</span></h1>
+	</div>
+	<p class="category-cloud">
+	{% for category, posts in categories|dictsort %}
+		{% set count = posts|length %}
+		{% if count < 10 %}
+			{% set btn_class = 'btn-mini' %}
+		{% elif count < 20 %}
+			{% set btn_class = 'btn-small btn-info' %}
+		{% elif count < 30 %}
+			{% set btn_class = 'btn-success' %}
+		{% else %}
+			{% set btn_class = 'btn-large btn-warning' %}
+		{% endif %}
+
+		<a href="/category/{{category}}/" class="btn {{btn_class}}" rel="tooltip" title="{{count}} posts">{{category}}</a>
+	{% endfor %}
+	</p>
+
+	{% include "footer.html" %}
+
+</div> <!-- /container -->
+{% endblock %}
