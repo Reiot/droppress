@@ -1,11 +1,3 @@
 temp/
 *.pyc
 .DS_Store
-
-vendor/bootstrap
-
-*.sublime-workspace
-
-*.sublime-project
-
-bootstrap

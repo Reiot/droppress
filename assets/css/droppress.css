@@ -32,4 +32,7 @@ body {
   body {
     padding-top: 0;
   }
+  h1{font-size:30px;}
+  h2{font-size:24px;}
+  h3{font-size:20px;}
 }
