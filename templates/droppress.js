@@ -8,6 +8,12 @@ $(function(){
 
     var $window = $(window);
 
+    $('#random-post').click(function(){
+        var title = titles[Math.floor(Math.random()*titles.length)]
+        var permlink = all_posts[title];
+        $(this).attr('href', permlink);
+    });
+
     $('.search-query').typeahead({
         source: titles
     });

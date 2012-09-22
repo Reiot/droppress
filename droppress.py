@@ -210,6 +210,7 @@ def read_post(post_path):
         comments=h.get('comments', False),
         created=h['date'],
         wordpress_id=h.get('wordpress_id'),
+        excerpt=h.get('excerpt'),
         content=to_markdown(content),
     )
 
