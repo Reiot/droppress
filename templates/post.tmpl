@@ -1,9 +1,8 @@
-<div>
-	<div class="page-header">
+<div class="post">
+	<div class="post-title page-header">
 		<h1><a href="{{post.permlink}}">{{post.title}}</a> <small>{{post.date}}</small></h1>
 	</div>
-	<div>{{post.content|safe}}</div>
-	<br />
+	<div class="post-content">{{post.content|safe}}</div>
 	<p>
 	{% for category in post.categories %}
 		<a href="/category/{{category}}/"><span class="label label-info"><span class="icon icon-folder-open"></span> {{category}}</span></a>

@@ -4,6 +4,14 @@ body {
     font-family: 'Helvetica Neue', '맑은 고딕', Helvetica, Arial, sans-serif;
 }
 
+.post {
+  margin-bottom: 1em;
+}
+
+.post-content {
+  padding-left: 1em;
+}
+
 .tag-cloud, .category-cloud {
     line-height: 250%;
 }
