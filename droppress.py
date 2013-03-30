@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-__version__ = '0.0.1'
+__version__ = '0.1.0'
 
 import logging
 import sys
@@ -136,32 +136,33 @@ def copy_assets():
 
     logging.info('copy assets..')
     assets_dir = os.path.join(DEPLOY_DIR, 'assets')
+    shutil.copytree(ASSETS_DIR, assets_dir)
 
-    # bootstrap assets first
-    BOOTSTRAP_ASSETS = os.path.join('bootstrap', 'bootstrap')
-    shutil.copytree(BOOTSTRAP_ASSETS, assets_dir)
+    # # bootstrap assets first
+    # BOOTSTRAP_ASSETS = os.path.join('bootstrap', 'bootstrap')
+    # shutil.copytree(BOOTSTRAP_ASSETS, assets_dir)
 
-    shutil.copy(os.path.join('bootstrap', 'docs', 'assets', 'js', 'jquery.js'), os.path.join(assets_dir, 'js'))
+    # shutil.copy(os.path.join('bootstrap', 'docs', 'assets', 'js', 'jquery.js'), os.path.join(assets_dir, 'js'))
 
-    google_code_prettify_dir = os.path.join(assets_dir, 'js', 'google-code-prettify')
-    if not os.path.exists(google_code_prettify_dir):
-        os.makedirs(google_code_prettify_dir)
-    shutil.copy(os.path.join('bootstrap', 'docs', 'assets', 'js', 'google-code-prettify', 'prettify.js'), google_code_prettify_dir)
-    shutil.copy(os.path.join('bootstrap', 'docs', 'assets', 'js', 'google-code-prettify', 'prettify.css'), google_code_prettify_dir)
+    # google_code_prettify_dir = os.path.join(assets_dir, 'js', 'google-code-prettify')
+    # if not os.path.exists(google_code_prettify_dir):
+    #     os.makedirs(google_code_prettify_dir)
+    # shutil.copy(os.path.join('bootstrap', 'docs', 'assets', 'js', 'google-code-prettify', 'prettify.js'), google_code_prettify_dir)
+    # shutil.copy(os.path.join('bootstrap', 'docs', 'assets', 'js', 'google-code-prettify', 'prettify.css'), google_code_prettify_dir)
 
-    # droppress assets last
-    for d in os.listdir(ASSETS_DIR):
-        logging.debug('assets/%s' % (d))
-        if d.startswith('.'):
-            continue
-        parent_dir = os.path.join(ASSETS_DIR, d)
-        for f in os.listdir(parent_dir):
-            src = os.path.join(ASSETS_DIR, d, f)
-            dst = os.path.join(assets_dir, d)
-            if not os.path.exists(dst):
-                os.makedirs(dst)
-            logging.debug('copy %s to %s' % (src, dst))
-            shutil.copy(src, dst)
+    # # droppress assets last
+    # for d in os.listdir(ASSETS_DIR):
+    #     logging.debug('assets/%s' % (d))
+    #     if d.startswith('.'):
+    #         continue
+    #     parent_dir = os.path.join(ASSETS_DIR, d)
+    #     for f in os.listdir(parent_dir):
+    #         src = os.path.join(ASSETS_DIR, d, f)
+    #         dst = os.path.join(assets_dir, d)
+    #         if not os.path.exists(dst):
+    #             os.makedirs(dst)
+    #         logging.debug('copy %s to %s' % (src, dst))
+    #         shutil.copy(src, dst)
 
     # github requires CNAME file which contains custom domain name. ex: 'reiot.com'
     if config['cname']:

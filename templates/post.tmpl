@@ -3,12 +3,23 @@
 		<h1><a href="{{post.permlink}}">{{post.title}}</a> <small>{{post.date}}</small></h1>
 	</div>
 	<div class="post-content">{{post.content|safe}}</div>
-	<p>
-	{% for category in post.categories %}
-		<a href="/category/{{category}}/"><span class="label label-info"><span class="icon icon-folder-open"></span> {{category}}</span></a>
-	{% endfor %}
-	{% for tag in post.tags %}
-		<a href="/tag/{{tag}}/"><span class="label"><span class="icon icon-tag"></span> {{tag}}</span></a>
-	{% endfor %}
-	</p>
+	<div class="well well-small">
+		{% if post.link %}
+		<p>Source: <a href="{{post.link}}">{{post.link}}</a></p>
+		{% endif %}
+		{% if post.categories %}
+		<p>Category:
+		{% for category in post.categories %}
+			<a href="/category/{{category}}/"><span class="label label-info"><span class="icon icon-folder-open"></span> {{category}}</span></a>
+		{% endfor %}
+		</p>
+		{% endif %}
+		{% if post.tags %}
+		<p>Tags:
+		{% for tag in post.tags %}
+			<a href="/tag/{{tag}}/"><span class="label"><span class="icon icon-tag"></span> {{tag}}</span></a>
+		{% endfor %}
+		</p>
+		{% endif %}
+	</div>
 </div>
